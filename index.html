@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>إزاي أبدأ في الدبلومة؟</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700;800&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #0f151c;
+    --surface: #17202a;
+    --surface-2: #1e2833;
+    --line: #2a3644;
+    --text: #eef1f4;
+    --muted: #8b98a6;
+    --amber: #e8a33d;
+    --amber-dim: #6b5227;
+    --green: #4fb286;
+    --radius: 14px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:
+      radial-gradient(1100px 500px at 85% -10%, rgba(232,163,61,0.08), transparent 60%),
+      var(--bg);
+    color:var(--text);
+    font-family:'Tajawal', sans-serif;
+    line-height:1.85;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.brand,.step-num{font-family:'Cairo', sans-serif;}
+
+  a{color:var(--amber);}
+
+  .wrap{
+    max-width:760px;
+    margin:0 auto;
+    padding:0 20px 80px;
+  }
+
+  /* Header */
+  header{
+    padding:56px 20px 44px;
+    text-align:center;
+    max-width:760px;
+    margin:0 auto;
+  }
+  .brand{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    color:var(--muted);
+    font-size:14px;
+    letter-spacing:.3px;
+    margin-bottom:22px;
+    border:1px solid var(--line);
+    padding:6px 16px;
+    border-radius:999px;
+    background:var(--surface);
+  }
+  .brand span.dot{
+    width:7px;height:7px;border-radius:50%;
+    background:var(--green);
+    box-shadow:0 0 8px var(--green);
+  }
+  h1{
+    font-size:clamp(26px, 5vw, 38px);
+    font-weight:800;
+    margin:0 0 16px;
+    line-height:1.5;
+  }
+  h1 em{
+    font-style:normal;
+    color:var(--amber);
+  }
+  .sub{
+    color:var(--muted);
+    font-size:16px;
+    max-width:520px;
+    margin:0 auto;
+  }
+
+  /* Path / list */
+  .path{
+    position:relative;
+    margin-top:36px;
+  }
+  .path::before{
+    content:"";
+    position:absolute;
+    top:8px;
+    bottom:8px;
+    right:23px;
+    width:2px;
+    background:linear-gradient(var(--line), var(--line) 85%, transparent);
+  }
+
+  .step{
+    position:relative;
+    padding-right:64px;
+    margin-bottom:14px;
+  }
+
+  .step-num{
+    position:absolute;
+    top:16px;
+    right:0;
+    width:47px;
+    height:47px;
+    border-radius:50%;
+    background:var(--surface);
+    border:1px solid var(--line);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:700;
+    font-size:15px;
+    color:var(--amber);
+    z-index:1;
+  }
+
+  details{
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    overflow:hidden;
+    transition:border-color .2s ease;
+  }
+  details[open]{
+    border-color:var(--amber-dim);
+  }
+
+  summary{
+    cursor:pointer;
+    list-style:none;
+    padding:16px 20px;
+    font-family:'Cairo', sans-serif;
+    font-weight:700;
+    font-size:16.5px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+  }
+  summary::-webkit-details-marker{display:none;}
+  summary .chev{
+    flex-shrink:0;
+    width:22px;height:22px;
+    color:var(--muted);
+    transition:transform .25s ease;
+  }
+  details[open] summary .chev{
+    transform:rotate(45deg);
+    color:var(--amber);
+  }
+
+  .answer{
+    padding:0 20px 22px;
+    color:#cfd6dd;
+    font-size:15.5px;
+  }
+  .answer p{margin:0 0 12px;}
+  .answer p:last-child{margin-bottom:0;}
+
+  .link-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:var(--surface-2);
+    border:1px solid var(--line);
+    color:var(--text);
+    text-decoration:none;
+    padding:9px 14px;
+    border-radius:9px;
+    font-size:14px;
+    margin:6px 6px 6px 0;
+    transition:border-color .15s ease, transform .15s ease;
+  }
+  .link-btn:hover{
+    border-color:var(--amber);
+    transform:translateY(-1px);
+  }
+  .link-btn svg{width:15px;height:15px;flex-shrink:0;color:var(--amber);}
+
+  .badge{
+    display:inline-block;
+    font-size:12.5px;
+    font-weight:700;
+    padding:3px 10px;
+    border-radius:999px;
+    margin-bottom:10px;
+  }
+  .badge.optional{background:rgba(79,178,134,0.15); color:var(--green);}
+  .badge.required{background:rgba(232,163,61,0.15); color:var(--amber);}
+
+  /* footer card */
+  .final{
+    margin-top:40px;
+    background:linear-gradient(160deg, var(--surface-2), var(--surface));
+    border:1px solid var(--amber-dim);
+    border-radius:var(--radius);
+    padding:26px 22px;
+    text-align:center;
+  }
+  .final h3{
+    margin:0 0 8px;
+    font-size:19px;
+  }
+  .final p{
+    color:var(--muted);
+    margin:0 0 16px;
+    font-size:14.5px;
+  }
+
+  footer{
+    text-align:center;
+    color:var(--muted);
+    font-size:13px;
+    padding:30px 20px 10px;
+  }
+
+  @media (max-width:480px){
+    header{padding:40px 16px 32px;}
+    .step{padding-right:56px;}
+    .step-num{width:42px;height:42px;font-size:14px;}
+    .path::before{right:20px;}
+    summary{font-size:15.5px;padding:14px 16px;}
+    .answer{padding:0 16px 18px;font-size:15px;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{transition:none !important; scroll-behavior:auto !important;}
+  }
+
+  summary:focus-visible, .link-btn:focus-visible{
+    outline:2px solid var(--amber);
+    outline-offset:2px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand"><span class="dot"></span> دبلومة الفرونت إند — الدفعة السادسة</div>
+  <h1>مش عارف تبدأ الكورس <em>إزاي؟</em></h1>
+  <p class="sub">كل الأسئلة اللي بتتكرر في الجروب كل يوم... إجاباتها هنا في مكان واحد. اضغط على أي سؤال وهيتفتحلك جوابه.</p>
+</header>
+
+<div class="wrap">
+  <div class="path">
+
+    <div class="step">
+      <div class="step-num">١</div>
+      <details open>
+        <summary>
+          مش فاهم حاجة، المفروض أعمل إيه عشان أبدأ؟
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+        </summary>
+        <div class="answer">
+          <p>الدبلومة عندها 4 مسارات، وكل مسار جواه شوية دورات. أنت هتبدأ بأول دورة في أول مسار.</p>
+          <p>وعشان تعرف الترتيب صح، الجدول ده هيوريك كل حاجة بالتفصيل:</p>
+          <a class="link-btn" href="https://docs.google.com/spreadsheets/d/1xfOMPRfH1A-VG9jKmqKnA0qmmgu9iO6tUW7zap2MBl8/edit?gid=808937103#gid=808937103" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18v18H3zM3 9h18M9 21V9"/></svg>
+            جدول ترتيب المسارات والدورات
+          </a>
+          <p>بعد ما تفتح الجدول وتعرف ترتيبك، روح على أول دورة في المسار الأول وابدأ فيها على طول.</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="step">
+      <div class="step-num">٢</div>
+      <details>
+        <summary>
+          طب مش عارف أدخل على أول دورة أصلاً، إزاي؟
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+        </summary>
+        <div class="answer">
+          <p>عادي، فيه فيديو معمول عشانك بالظبط، بيوريك المنصة خطوة خطوة ازاي تدخل على الدورات:</p>
+          <a class="link-btn" href="https://youtu.be/ygAh-yRzZwE" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 3l14 9-14 9V3z"/></svg>
+            فيديو دليل التعامل مع المنصة
+          </a>
+          <p>وبعدين تدخل على صفحة "كورساتي" وتبدأ أول دورة حسب ترتيب الجدول اللي فوق:</p>
+          <a class="link-btn" href="https://almdrasa.com/my-courses/" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+            صفحة كورساتي
+          </a>
+        </div>
+      </details>
+    </div>
+
+    <div class="step">
+      <div class="step-num">٣</div>
+      <details>
+        <summary>
+          أذاكر إزاي بالظبط؟ أتفرج على الدروس وخلاص؟
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+        </summary>
+        <div class="answer">
+          <p>لأ، فيه طريقة صح للمذاكرة عشان المعلومة تفضل في دماغك مش تعدي وخلاص. اتفرج على الفيديو ده هيشرحلك ازاي بالظبط:</p>
+          <a class="link-btn" href="https://t.me/Almdrasa_Scholarship_Batch6/156/2823" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 3l14 9-14 9V3z"/></svg>
+            فيديو طريقة المذاكرة (توبيك d-records)
+          </a>
+        </div>
+      </details>
+    </div>
+
+    <div class="step">
+      <div class="step-num">٤</div>
+      <details>
+        <summary>
+          حملت ملف PDF مواد الدورة... ده هو الكورس؟
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+        </summary>
+        <div class="answer">
+          <p>لأ، ده مش الكورس. ده مجرد ملف فيه الأكواد والمختصرات الكتابية اللي هتتكتب أثناء الدروس، عشان يبقى موجود عندك جاهز بدل ما تكتبه من الأول.</p>
+          <p>الكورس الحقيقي (الدروس نفسها) موجود في قسم تاني جنبه في نفس الصفحة. لازم تدخل على القسم بتاع "الدروس" علشان تبدأ فعليًا.</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="step">
+      <div class="step-num">٥</div>
+      <details>
+        <summary>
+          الاجتماعات دي حضورها إجباري؟ وايه الهدف منها
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+        </summary>
+        <div class="answer">
+          <span class="badge optional">مش إجباري</span>
+          <p>لو معندكش سؤال، مش لازم تحضر. الغرض الوحيد من الاجتماع إن المشرفين يردوا على أي استفسار عندكم في المنهج أو الدورات.</p>
+          <p>المواعيد: <strong>السبت والثلاثاء</strong>، من الساعة <strong>6:00م لـ 6:30م</strong>.</p>
+          <a class="link-btn" href="https://meet.google.com/knr-ijbg-bxn" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="6" width="14" height="12" rx="2"/><path d="M17 10l4-2v8l-4-2"/></svg>
+            رابط الاجتماع (Google Meet)
+          </a>
+          <p>احتفظ بالرابط ده، هتستخدمه دايمًا. وهتلاقيه كمان محفوظ في توبيك المواعيد:</p>
+          <a class="link-btn" href="https://t.me/Almdrasa_Scholarship_Batch6/154" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+            توبيك Schedule &amp; Meetings
+          </a>
+        </div>
+      </details>
+    </div>
+
+    <div class="step">
+      <div class="step-num">٦</div>
+      <details>
+        <summary>
+          الجروب فيه رسايل كتير جدًا وأنا تايه، أعمل إيه؟
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+        </summary>
+        <div class="answer">
+          <p>ده طبيعي جدًا، والحل بسيط: مش مطلوب منك تقرا كل رسالة في الجروب. أي معلومة مهمة ليك كطالب، بنعملها <strong>رسالة مثبّتة (Pinned)</strong>.</p>
+          <p>يعني ركّز بس على الرسايل المثبّتة، وباقي الرسايل عادي متتابعهاش كلمة كلمة.</p>
+        </div>
+      </details>
+    </div>
+
+  </div>
+
+  <div class="final">
+    <h3>لسه مكسل تقرا؟ 🙂</h3>
+    <p>فيديو واحد بيشرحلك كل التوبيكات الموجودة في الجروب وهتلاقي فين أي حاجة، بدل ما تسأل نفس الأسئلة تاني.</p>
+    <a class="link-btn" href="https://t.me/Almdrasa_Scholarship_Batch6/156/677" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 3l14 9-14 9V3z"/></svg>
+      شوف فيديو التوبيكات كلها
+    </a>
+  </div>
+</div>
+
+<footer>دبلومة الفرونت إند — الدفعة السادسة · almdrasa.com</footer>
+
+</body>
+</html>
